@@ -50,8 +50,17 @@ pip install -r requirements.txt
 
 ---
 
-## 👩‍💻 Autora
+## 👤 Autora
 
 **Joanna Alexandra Carrión Pérez**  
-🎓 Bachiller en Ingeniería Electrónica
-📧 joannacarrion14@gmail.com
+🎓 Bachiller en Ingeniería Electrónica  
+🚀 Apasionada por la ciencia de datos y sistemas inteligentes  
+📧 joannacarrion14@gmail.com  
+🔗 ![LinkedIn](https://img.shields.io/badge/LinkedIn-Joanna%20Carrión%20Pérez-blue?style=flat&logo=linkedin) [LinkedIn](https://www.linkedin.com/in/joanna-carrion-perez/)
+
+---
+
+## 🧩 Contribuciones
+
+¿Ideas o mejoras?  
+Haz un **fork**, mejora lo que gustes y envía un **pull request**. ¡Las contribuciones son bienvenidas! 
