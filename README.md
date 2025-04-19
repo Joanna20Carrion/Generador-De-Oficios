@@ -48,6 +48,7 @@ Asegúrate de tener estas dependencias en tu entorno:
 ```bash
 pip install -r requirements.txt
 ```
+
 ---
 
 ## 👤 Autora
