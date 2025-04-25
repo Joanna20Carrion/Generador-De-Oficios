@@ -101,7 +101,8 @@ def generate():
             pdf_file = pdf_files.get(actividad)
             if pdf_file:
                 pdf_name = pdf_file.filename or f"{actividad}.pdf"
-                pdf_bytes = pdf_file.read()
+                pdf_file.stream.seek(0)
+                pdf_bytes = pdf_file.stream.read()
                 ruta_pdf = f"{actividad}/{codigo}/{pdf_name}"
                 zip_file.writestr(ruta_pdf, pdf_bytes)
 
