@@ -58,7 +58,7 @@ def generate():
             entidad = fila["RAZON SOCIAL"].values[0]
             direccion = fila["DIRECCIÓN"].values[0]
             distrito = fila["Distrito"].values[0]
-            actividad = fila["ACTIVIDAD"].values[0]
+            actividad = fila["ACTIVIDAD"].values[0]  # Tipo de actividad: Generación, Transmisión, etc.
 
             documento = Document(word_file)
 
@@ -91,13 +91,19 @@ def generate():
             doc_buffer = io.BytesIO()
             documento.save(doc_buffer)
             doc_buffer.seek(0)
-            zip_file.writestr(f"{codigo}/{codigo}.docx", doc_buffer.read())
+            
+            # Define el nombre del documento y la ruta dentro del ZIP
+            nombre_documento = f"OFICIO-{entidad.replace(' ', '_')}.docx"
+            ruta_carpeta_empresa = f"{actividad}/{codigo}/{nombre_documento}"
+            zip_file.writestr(ruta_carpeta_empresa, doc_buffer.read())
 
+            # Agrega los PDFs a la carpeta correspondiente
             pdf_file = pdf_files.get(actividad)
             if pdf_file:
                 pdf_name = pdf_file.filename or f"{actividad}.pdf"
                 pdf_bytes = pdf_file.read()
-                zip_file.writestr(f"{codigo}/{pdf_name}.pdf", pdf_bytes)
+                ruta_pdf = f"{actividad}/{codigo}/{pdf_name}"
+                zip_file.writestr(ruta_pdf, pdf_bytes)
 
     zip_buffer.seek(0)
     return send_file(
@@ -108,4 +114,4 @@ def generate():
     )
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8080)  
