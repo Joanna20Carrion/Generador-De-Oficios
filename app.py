@@ -61,6 +61,8 @@ def generate():
             actividad = fila["ACTIVIDAD"].values[0]  # Tipo de actividad: Generación, Transmisión, etc.
 
             documento = Document(word_file)
+            
+            print(f"Valor de entidad antes del reemplazo: {entidad}")
 
             for parrafo in documento.paragraphs:
                 for run in parrafo.runs:
@@ -73,8 +75,10 @@ def generate():
                         run.text = run.text.replace("[Cargo]", cargo)
                         run.font.name = "Poppins"
                         run.font.size = Pt(9.5)
-                    if "[Entidad]" in run.text and entidad:
-                        run.text = run.text.replace("[Entidad]", entidad)
+                    if "[Entidad]" in run.text:
+                        nuevo_texto = run.text.replace("[Entidad]", str(entidad))
+                        run.clear() 
+                        run.add_text(nuevo_texto) 
                         run.font.bold = True
                         run.font.name = "Poppins"
                         run.font.size = Pt(9.5)
