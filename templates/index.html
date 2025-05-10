@@ -31,10 +31,14 @@
           </div>
 
           <div class="mb-3">
-            <label for="codigos" class="form-label">
-              <i class="fas fa-code text-secondary"></i> Códigos de empresas (separados por comas):
+            <label class="form-label">
+              <i class="fas fa-building text-secondary"></i> Seleccione empresas:
             </label>
-            <input type="text" class="form-control" id="codigos" name="codigos" placeholder="Ejemplo: ATS,CHN,ELC" required />
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <input type="text" class="form-control me-2" id="searchInput" placeholder="Buscar empresa...">
+              <button type="button" class="btn btn-sm btn-outline-primary" id="selectAllBtn">Seleccionar todos</button>
+            </div>
+            <div id="razonesCheckboxList" class="form-control" style="height: auto; max-height: 250px; overflow-y: auto;"></div>
           </div>
 
           <hr />
@@ -71,5 +75,57 @@
       </div>
     </div>
   </div>
+
+<script>
+  document.getElementById("excel").addEventListener("change", function () {
+    const excelFile = this.files[0];
+    const formData = new FormData();
+    formData.append("excel", excelFile);
+
+    fetch("/get_razones_sociales", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById("razonesCheckboxList");
+      container.innerHTML = "";
+      if (data.razones) {
+        data.razones.forEach((razon, index) => {
+          const id = `razon_${index}`;
+          const checkbox = `
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="${razon}" id="${id}" name="razones">
+              <label class="form-check-label" for="${id}">
+                ${razon}
+              </label>
+            </div>`;
+          container.innerHTML += checkbox;
+        });
+      } else {
+        alert("No se pudieron cargar las razones sociales.");
+      }
+    });
+  });
+
+  document.addEventListener("input", function () {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toLowerCase();
+    const checkboxes = document.querySelectorAll("#razonesCheckboxList .form-check");
+    checkboxes.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      item.style.display = text.includes(filter) ? "" : "none";
+    });
+  });
+
+  let allSelected = false;
+  document.getElementById("selectAllBtn").addEventListener("click", function () {
+    const allCheckboxes = document.querySelectorAll('#razonesCheckboxList input[type="checkbox"]');
+    allCheckboxes.forEach(chk => chk.checked = !allSelected);
+    allSelected = !allSelected;
+    this.textContent = allSelected ? "Deseleccionar todos" : "Seleccionar todos";
+  });
+</script>
+
 </body>
 </html>
