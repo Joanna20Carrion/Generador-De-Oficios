@@ -70,27 +70,27 @@ def generate():
                         run.text = run.text.replace("[Nombre del Destinatario]", nombre_destinatario)
                         run.font.bold = True
                         run.font.name = "Poppins"
-                        run.font.size = Pt(9.5)
+                        run.font.size = Pt(9)
                     if "[Cargo]" in run.text:
                         run.text = run.text.replace("[Cargo]", cargo)
                         run.font.name = "Poppins"
-                        run.font.size = Pt(9.5)
+                        run.font.size = Pt(9)
                     if "[Entidad]" in run.text:
                         nuevo_texto = run.text.replace("[Entidad]", str(entidad))
                         run.clear() 
                         run.add_text(nuevo_texto) 
                         run.font.bold = True
                         run.font.name = "Poppins"
-                        run.font.size = Pt(9.5)
+                        run.font.size = Pt(9)
                     if "[Dirección]" in run.text:
                         run.text = run.text.replace("[Dirección]", direccion)
                         run.font.name = "Poppins"
-                        run.font.size = Pt(9.5)
+                        run.font.size = Pt(9)
                     if "[Distrito]" in run.text:
                         run.text = run.text.replace("[Distrito]", distrito)
                         run.font.underline = True
                         run.font.name = "Poppins"
-                        run.font.size = Pt(9.5)
+                        run.font.size = Pt(9)
 
             doc_buffer = io.BytesIO()
             documento.save(doc_buffer)
