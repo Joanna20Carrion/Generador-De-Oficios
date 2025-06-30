@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-App-lightgrey?style=flat&logo=flask)
 ![HTML5](https://img.shields.io/badge/HTML5-Bootstrap-orange?style=flat&logo=html5)
-![Estado](https://img.shields.io/badge/Deploy-Railway-green?style=flat&logo=railway)
 
 ---
 
@@ -37,7 +36,6 @@ Los documentos generados se empaquetan automáticamente en un **archivo ZIP para
 - ![OpenPyXL](https://img.shields.io/badge/OpenPyXL-Excel_Reader-yellowgreen?style=flat)  
 - ![python-docx](https://img.shields.io/badge/python--docx-Word_Generator-blueviolet?style=flat)  
 - ![HTML5](https://img.shields.io/badge/HTML5-+Bootstrap-orange?style=flat&logo=html5)  
-- ![Railway](https://img.shields.io/badge/Deploy-Railway-green?style=flat&logo=railway)
 
 ---
 
